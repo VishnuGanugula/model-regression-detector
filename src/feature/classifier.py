@@ -35,7 +35,8 @@ def setup_local_model():
     )
 
     project_root = Path(__file__).resolve().parents[2]
-    weights_path = project_root / "custom_gpt2_124M.pth"
+    # Update from custom_gpt2_124M.pth to your new fine-tuned weights file
+    weights_path = project_root / "fine_tuned_gpt2.pth"
 
     if not weights_path.exists():
         print(f"Weights file {weights_path.name} not found. Automatically downloading and mapping OpenAI GPT-2 weights...")
