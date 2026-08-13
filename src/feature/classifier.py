@@ -35,13 +35,28 @@ def setup_local_model():
     )
 
     project_root = Path(__file__).resolve().parents[2]
-    # Update from custom_gpt2_124M.pth to your new fine-tuned weights file
-    weights_path = project_root / "fine_tuned_gpt2.pth"
+    fine_tuned_weights_path = project_root / "fine_tuned_gpt2.pth"
+    base_weights_path = project_root / "custom_gpt2_124M.pth"
+    weights_path = fine_tuned_weights_path
+
+    if not fine_tuned_weights_path.exists():
+        if base_weights_path.exists():
+            print(
+                f"Weights file {fine_tuned_weights_path.name} not found. "
+                f"Using {base_weights_path.name}."
+            )
+            weights_path = base_weights_path
+        else:
+            print(
+                f"Weights file {fine_tuned_weights_path.name} not found. "
+                "Automatically downloading and mapping OpenAI GPT-2 weights..."
+            )
+            from load_weights import load_openai_weights
+            load_openai_weights()
+            weights_path = base_weights_path
 
     if not weights_path.exists():
-        print(f"Weights file {weights_path.name} not found. Automatically downloading and mapping OpenAI GPT-2 weights...")
-        from load_weights import load_openai_weights
-        load_openai_weights()
+        raise FileNotFoundError(f"Weights file not found: {weights_path}")
 
     print("Loading pre-trained weights into the model...")
     model.load_state_dict(torch.load(weights_path))
