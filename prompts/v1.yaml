@@ -1,0 +1,24 @@
+version: "v1.0.0"
+description: "Few-shot text completion prompt for base GPT-2 model"
+model: "custom-gpt-2-124M"
+temperature: 0.1 # Very low temperature to force deterministic classification
+top_k: 1 # Greedy decoding for classification
+
+# GPT-2 needs to see the pattern to know what to do next.
+prompt_template: |
+  Classify the customer support emails into one category: billing, technical, account, or general.
+  
+  Email: "I was charged twice for my subscription this month. Can I get a refund?"
+  Category: billing
+  
+  Email: "The app keeps crashing on my iPhone 13."
+  Category: technical
+  
+  Email: "How do I change my profile picture?"
+  Category: account
+  
+  Email: "What are your business hours?"
+  Category: general
+  
+  Email: "{email_text}"
+  Category:

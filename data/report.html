@@ -1,0 +1,109 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LLM Regression Report</title>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
+            h1 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+            .summary-container { display: flex; gap: 20px; margin-bottom: 30px; }
+            .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-width: 150px; text-align: center; }
+            .card h3 { margin: 0 0 10px 0; color: #666; font-size: 14px; text-transform: uppercase; }
+            .card p { margin: 0; font-size: 24px; font-weight: bold; }
+            table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+            th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+            th { background-color: #f8f9fa; font-weight: 600; }
+            .status-pass { color: #155724; background-color: #d4edda; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+            .status-fail { color: #721c24; background-color: #f8d7da; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+            .diff-improve { color: #155724; font-weight: bold; }
+            .diff-regress { color: #721c24; font-weight: bold; }
+            .diff-none { color: #6c757d; }
+        </style>
+    </head>
+    <body>
+        <h1>LLM Evaluation & Regression Report</h1>
+
+        <div class="summary-container">
+            <div class="card">
+                <h3>Prompt Version</h3>
+                <p>v1.0.0</p>
+            </div>
+            <div class="card">
+                <h3>Accuracy</h3>
+                <p>40.0%</p>
+            </div>
+            <div class="card">
+                <h3>Delta (vs Last)</h3>
+                <p style="color: black">+0.0%</p>
+            </div>
+            <div class="card">
+                <h3>Total Cases</h3>
+                <p>5</p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Input Text</th>
+                    <th>Expected</th>
+                    <th>Actual</th>
+                    <th>Status</th>
+                    <th>Diff (vs Last)</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>TC-001</td>
+                    <td>I noticed a double charge on my credit card for this mont...</td>
+                    <td>billing</td>
+                    <td>billing</td>
+                    <td><span class="status-pass">PASS</span></td>
+                    <td><span class="diff-improve">🚀 Improved</span></td>
+                </tr>
+        
+                <tr>
+                    <td>TC-002</td>
+                    <td>The mobile app keeps crashing every time I try to upload ...</td>
+                    <td>technical</td>
+                    <td>general</td>
+                    <td><span class="status-fail">FAIL</span></td>
+                    <td><span class="diff-regress">🚨 Regression</span></td>
+                </tr>
+        
+                <tr>
+                    <td>TC-003</td>
+                    <td>how do i change my password</td>
+                    <td>account</td>
+                    <td>general</td>
+                    <td><span class="status-fail">FAIL</span></td>
+                    <td><span class="diff-none">-</span></td>
+                </tr>
+        
+                <tr>
+                    <td>TC-004</td>
+                    <td>Are you guys open on weekends? I want to drop by the main...</td>
+                    <td>general</td>
+                    <td>general</td>
+                    <td><span class="status-pass">PASS</span></td>
+                    <td><span class="diff-none">-</span></td>
+                </tr>
+        
+                <tr>
+                    <td>TC-005</td>
+                    <td>I upgraded to the pro tier but my account still says free...</td>
+                    <td>billing</td>
+                    <td>technical</td>
+                    <td><span class="status-fail">FAIL</span></td>
+                    <td><span class="diff-none">-</span></td>
+                </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

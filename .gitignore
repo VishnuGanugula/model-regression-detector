@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Byte-compiled / Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyCharm / IDEs
+.idea/
+.vscode/
+
+# Large model binaries / weights
+*.pth
+*.pt
+*.bin
+*.onnx
+*.safetensors
+custom_gpt2_124M.pth

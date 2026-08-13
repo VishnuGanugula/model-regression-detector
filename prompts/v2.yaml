@@ -1,0 +1,27 @@
+version: "v2.0.0"
+description: "Improved few-shot prompt targeting edge cases and financial ambiguity"
+model: "custom-gpt-2-124M"
+temperature: 0.1
+top_k: 1
+
+# We added specific examples for credit cards, upgrades, and lowercase password resets.
+prompt_template: |
+  Classify the customer support emails into exactly one category: billing, technical, account, or general.
+  
+  Email: "Can I get a refund? I noticed a double charge on my credit card."
+  Category: billing
+  
+  Email: "I upgraded to the pro tier but was charged incorrectly on my account."
+  Category: billing
+  
+  Email: "The mobile app keeps crashing and freezing on my phone."
+  Category: technical
+  
+  Email: "how do i reset my password and login"
+  Category: account
+  
+  Email: "Are you guys open on weekends or holidays?"
+  Category: general
+  
+  Email: "{email_text}"
+  Category:

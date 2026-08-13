@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC-001",
+    "email_text": "I noticed a double charge on my credit card for this month's subscription. Please refund the extra $15 immediately.",
+    "expected_category": "billing",
+    "expected_difficulty": "easy",
+    "notes": "Standard billing issue with clear keywords."
+  },
+  {
+    "id": "TC-002",
+    "email_text": "The mobile app keeps crashing every time I try to upload a profile picture on my iPhone 13.",
+    "expected_category": "technical",
+    "expected_difficulty": "easy",
+    "notes": "Standard technical bug report."
+  },
+  {
+    "id": "TC-003",
+    "email_text": "how do i change my password",
+    "expected_category": "account",
+    "expected_difficulty": "medium",
+    "notes": "Edge case: extremely short, no punctuation, all lowercase."
+  },
+  {
+    "id": "TC-004",
+    "email_text": "Are you guys open on weekends? I want to drop by the main office.",
+    "expected_category": "general",
+    "expected_difficulty": "easy",
+    "notes": "Standard general inquiry."
+  },
+  {
+    "id": "TC-005",
+    "email_text": "I upgraded to the pro tier but my account still says free, and I was definitely charged for it.",
+    "expected_category": "billing",
+    "expected_difficulty": "hard",
+    "notes": "Edge case: contains keywords for account, technical, and billing. The core issue is financial."
+  }
+]
