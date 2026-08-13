@@ -1,6 +1,12 @@
+import sys
 import yaml
 import torch
 from pathlib import Path
+
+# Ensure project root is in sys.path
+project_root = Path(__file__).resolve().parents[2]
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
 
 # Import your custom architecture components
 from src.model.tokenizer import TokenizerWrapper
@@ -28,10 +34,13 @@ def setup_local_model():
         max_seq_len=1024  # GPT-2 Small context
     )
 
-    # NOTE: Assuming you have a saved state_dict containing the OpenAI weights mapped to your layers
-    # model.load_state_dict(torch.load("path/to/your/gpt2_mapped_weights.pth"))
     project_root = Path(__file__).resolve().parents[2]
     weights_path = project_root / "custom_gpt2_124M.pth"
+
+    if not weights_path.exists():
+        print(f"Weights file {weights_path.name} not found. Automatically downloading and mapping OpenAI GPT-2 weights...")
+        from load_weights import load_openai_weights
+        load_openai_weights()
 
     print("Loading pre-trained weights into the model...")
     model.load_state_dict(torch.load(weights_path))

@@ -25,9 +25,13 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Evaluation Diff Engine
+      env:
+        PYTHONPATH: .
       run: python src/feature/evaluate.py
 
     - name: Generate HTML Report
+      env:
+        PYTHONPATH: .
       run: python src/feature/generate_report.py
 
     - name: Upload HTML Report as Artifact

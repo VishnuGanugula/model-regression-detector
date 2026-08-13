@@ -66,5 +66,39 @@
         "passed": false
       }
     }
+  },
+  {
+    "timestamp": "2026-08-13T17:01:15.510652",
+    "prompt_version": "v1.0.0",
+    "total_cases": 5,
+    "passed": 2,
+    "accuracy": 40.0,
+    "results": {
+      "TC-001": {
+        "expected": "billing",
+        "actual": "billing",
+        "passed": true
+      },
+      "TC-002": {
+        "expected": "technical",
+        "actual": "general",
+        "passed": false
+      },
+      "TC-003": {
+        "expected": "account",
+        "actual": "general",
+        "passed": false
+      },
+      "TC-004": {
+        "expected": "general",
+        "actual": "general",
+        "passed": true
+      },
+      "TC-005": {
+        "expected": "billing",
+        "actual": "technical",
+        "passed": false
+      }
+    }
   }
 ]
