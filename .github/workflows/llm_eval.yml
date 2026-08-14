@@ -24,6 +24,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Download Base Weights & Fine-Tune Model
+      env:
+        PYTHONPATH: .
+      run: |
+        python load_weights.py
+        python train.py
+
     - name: Run Evaluation Diff Engine
       env:
         PYTHONPATH: .

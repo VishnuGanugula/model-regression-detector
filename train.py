@@ -76,11 +76,13 @@ val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_w
 # --- 4. Initialize Model & Load Base Weights ---
 model = CausalTransformer(vocab_size, d_model, num_heads, num_layers, max_seq_len).to(device)
 
-if weights_path.exists():
-    print("Loading pre-trained GPT-2 base weights...")
-    model.load_state_dict(torch.load(weights_path, map_location=device))
-else:
-    print("❌ Pre-trained weights not found! Run load_weights.py first.")
+if not weights_path.exists():
+    print("Pre-trained weights (custom_gpt2_124M.pth) not found! Running load_weights.py...")
+    from load_weights import load_openai_weights
+    load_openai_weights()
+
+print("Loading pre-trained GPT-2 base weights...")
+model.load_state_dict(torch.load(weights_path, map_location=device))
 
 optimizer = AdamW(model.parameters(), lr=learning_rate)
 
