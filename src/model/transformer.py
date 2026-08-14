@@ -1,3 +1,11 @@
+import sys
+from pathlib import Path
+
+# Ensure project root is in sys.path
+project_root = Path(__file__).resolve().parents[2]
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
 import torch
 import torch.nn as nn
 from src.model.attention import MultiHeadAttention
@@ -141,7 +149,7 @@ class CausalTransformer(nn.Module):
 
 # --- Full End-to-End Generation Test ---
 if __name__ == "__main__":
-    from tokenizer import TokenizerWrapper
+    from src.model.tokenizer import TokenizerWrapper
 
     # 1. Initialize Tokenizer and Model
     tokenizer = TokenizerWrapper()
